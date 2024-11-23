@@ -1,7 +1,7 @@
 package com.takeanumbrella.takeanumbrellaserver.client.notification;
 
 public class Notification {
-    private Long idMessage;
+    private Long messageId;
     private String message;
 
     public Notification(String message){
@@ -12,7 +12,7 @@ public class Notification {
         return message;
     }
 
-    public Long getIdMessage() {
-        return idMessage;
+    public Long getMessageId() {
+        return messageId;
     }
 }

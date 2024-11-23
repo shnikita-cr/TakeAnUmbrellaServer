@@ -10,10 +10,10 @@ import com.takeanumbrella.takeanumbrellaserver.rentalLocation.Coordinates;
 import com.takeanumbrella.takeanumbrellaserver.rentalLocation.RentalLocation;
 import com.takeanumbrella.takeanumbrellaserver.rentalLocation.RentalLocationStatus;
 import com.takeanumbrella.takeanumbrellaserver.umbrella.Umbrella;
-import com.takeanumbrella.takeanumbrellaserver.umbrella.states.ColorOfUmbrella;
-import com.takeanumbrella.takeanumbrellaserver.umbrella.states.SizeOfUmbrella;
+import com.takeanumbrella.takeanumbrellaserver.umbrella.states.UmbrellaColor;
+import com.takeanumbrella.takeanumbrellaserver.umbrella.states.UmbrellaSize;
 import com.takeonanumbrella.takeanumbrellaserver.client.*;
-import com.takeanumbrella.takeanumbrellaserver.umbrella.states.StatusOfUmbrella;
+import com.takeanumbrella.takeanumbrellaserver.umbrella.states.UmbrellaStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class Test1 {
 
     private RentalLocation loc1 = new RentalLocation("adress1", new Coordinates(1.0, 2.0), new ArrayList<>(), RentalLocationStatus.OPEN);
-    private Umbrella umbrella1 = new Umbrella(SizeOfUmbrella.BIG, ColorOfUmbrella.BLACK, StatusOfUmbrella.FREE, null);
+    private Umbrella umbrella1 = new Umbrella(UmbrellaSize.BIG, UmbrellaColor.BLACK, UmbrellaStatus.FREE, null);
 
     @Test
     void testAddUmbrella() {

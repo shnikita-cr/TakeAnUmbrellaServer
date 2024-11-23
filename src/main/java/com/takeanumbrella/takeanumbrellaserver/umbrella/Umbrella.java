@@ -1,9 +1,9 @@
 package com.takeanumbrella.takeanumbrellaserver.umbrella;
 
-import com.takeanumbrella.takeanumbrellaserver.umbrella.states.ColorOfUmbrella;
-import com.takeanumbrella.takeanumbrellaserver.umbrella.states.SizeOfUmbrella;
+import com.takeanumbrella.takeanumbrellaserver.umbrella.states.UmbrellaColor;
+import com.takeanumbrella.takeanumbrellaserver.umbrella.states.UmbrellaSize;
 import com.takeanumbrella.takeanumbrellaserver.rentalLocation.RentalLocation;
-import com.takeanumbrella.takeanumbrellaserver.umbrella.states.StatusOfUmbrella;
+import com.takeanumbrella.takeanumbrellaserver.umbrella.states.UmbrellaStatus;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.SequenceGenerator;
@@ -14,35 +14,35 @@ public class Umbrella {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "umbrella_seq")
     @SequenceGenerator(name = "umbrella_seq", sequenceName = "umbrella_sequence", allocationSize = 1)
     private Long umbrellaId;
-    private final SizeOfUmbrella size;
-    private final ColorOfUmbrella color;
-    private StatusOfUmbrella status;
+    private final UmbrellaSize size;
+    private final UmbrellaColor color;
+    private UmbrellaStatus status;
     private RentalLocation location;
 
-    public Umbrella(SizeOfUmbrella size, ColorOfUmbrella color, StatusOfUmbrella status, RentalLocation locationId) {
+    public Umbrella(UmbrellaSize size, UmbrellaColor color, UmbrellaStatus status, RentalLocation location) {
         this.size = size;
         this.color = color;
         this.status = status;
-        this.location = locationId;
+        this.location = location;
     }
 
     public boolean isFree(){
-        return status==StatusOfUmbrella.FREE;
+        return status== UmbrellaStatus.FREE;
     }
 
     public Long getUmbrellaId() {
         return umbrellaId;
     }
 
-    public SizeOfUmbrella getSize() {
+    public UmbrellaSize getSize() {
         return size;
     }
 
-    public ColorOfUmbrella getColor() {
+    public UmbrellaColor getColor() {
         return color;
     }
 
-    public StatusOfUmbrella getStatus() {
+    public UmbrellaStatus getStatus() {
         return status;
     }
 
@@ -50,7 +50,7 @@ public class Umbrella {
         return location;
     }
 
-    public void setStatus(StatusOfUmbrella status) {
+    public void setStatus(UmbrellaStatus status) {
         this.status = status;
     }
 

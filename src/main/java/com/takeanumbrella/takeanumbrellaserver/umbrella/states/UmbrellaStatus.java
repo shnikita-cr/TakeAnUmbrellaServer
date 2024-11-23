@@ -1,6 +1,6 @@
 package com.takeanumbrella.takeanumbrellaserver.umbrella.states;
 
-public enum StatusOfUmbrella {
+public enum UmbrellaStatus {
     FREE,
     BUSY,
     DEFECTIVE

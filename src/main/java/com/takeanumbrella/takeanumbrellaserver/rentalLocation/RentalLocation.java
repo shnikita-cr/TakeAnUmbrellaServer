@@ -1,13 +1,13 @@
 package com.takeanumbrella.takeanumbrellaserver.rentalLocation;
 
 import com.takeanumbrella.takeanumbrellaserver.umbrella.Umbrella;
-import com.takeanumbrella.takeanumbrellaserver.umbrella.states.StatusOfUmbrella;
+import com.takeanumbrella.takeanumbrellaserver.umbrella.states.UmbrellaStatus;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RentalLocation {
-    private Long idLocation;
+    private Long locationId;
     private String adress;
     private Coordinates location;
     private List<Umbrella> validUmbrellas = new ArrayList<>();
@@ -26,13 +26,13 @@ public class RentalLocation {
     public void addUmbrella(Umbrella newUmbrella) {
         validUmbrellas.add(newUmbrella);
         newUmbrella.setLocation(this);
-        newUmbrella.setStatus(StatusOfUmbrella.FREE);
+        newUmbrella.setStatus(UmbrellaStatus.FREE);
     }
 
     public void removeUmbrella(Umbrella umbrella) {
         validUmbrellas.remove(umbrella);
         umbrella.setLocation(null);
-        umbrella.setStatus(StatusOfUmbrella.BUSY);
+        umbrella.setStatus(UmbrellaStatus.BUSY);
     }
 
     public int countAvailableUmbrellas() {

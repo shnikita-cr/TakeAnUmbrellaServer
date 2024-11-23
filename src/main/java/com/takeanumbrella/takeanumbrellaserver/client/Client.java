@@ -7,8 +7,7 @@ import com.takeanumbrella.takeanumbrellaserver.rental.Rental;
 import com.takeanumbrella.takeanumbrellaserver.rental.tariff.Tariff;
 import com.takeanumbrella.takeanumbrellaserver.rentalLocation.RentalLocation;
 import com.takeanumbrella.takeanumbrellaserver.umbrella.Umbrella;
-import com.takeanumbrella.takeanumbrellaserver.rental.*;
-import com.takeanumbrella.takeanumbrellaserver.umbrella.states.StatusOfUmbrella;
+import com.takeanumbrella.takeanumbrellaserver.umbrella.states.UmbrellaStatus;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.SequenceGenerator;
@@ -44,7 +43,7 @@ public class Client {
         PaymentMethod paymentNow = paymentMethods.get(namePaymentMethod);
         Rental rental = new Rental( this, umbrella, tariff, paymentNow);
         currentRentals.add(rental);
-        umbrella.setStatus(StatusOfUmbrella.BUSY);
+        umbrella.setStatus(UmbrellaStatus.BUSY);
         umbrella.setLocation(null);
     }
 

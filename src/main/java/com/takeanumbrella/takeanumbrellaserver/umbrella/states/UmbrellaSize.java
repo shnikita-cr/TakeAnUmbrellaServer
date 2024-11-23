@@ -1,6 +1,6 @@
 package com.takeanumbrella.takeanumbrellaserver.umbrella.states;
 
-public enum SizeOfUmbrella {
+public enum UmbrellaSize {
     SMALL,
     MEDIUM,
     BIG,

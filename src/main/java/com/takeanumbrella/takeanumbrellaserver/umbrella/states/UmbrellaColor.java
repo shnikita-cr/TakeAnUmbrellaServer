@@ -1,6 +1,6 @@
 package com.takeanumbrella.takeanumbrellaserver.umbrella.states;
 
-public enum ColorOfUmbrella {
+public enum UmbrellaColor {
     RED,
     GREEN,
     BLUE,
