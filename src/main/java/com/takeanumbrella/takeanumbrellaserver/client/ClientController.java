@@ -13,15 +13,14 @@ public class ClientController {
         this.clientService = clientService;
     }
 
-    @RequestMapping(path = "api/v1/clients/{id}")
-    @GetMapping
+    @GetMapping(path = "api/v1/clients/{id}")
     public Client getClient(@PathVariable Long id) {//implements CLIENT INFO request
         return clientService.getClient(id);
     }
 
-    @RequestMapping(path = "api/v1/clients")
-    @PostMapping
-    public HttpStatus addClient(@RequestBody Client client) {//implements NEW CLIENT request
+    @PostMapping(path = "api/v1/clients")
+    @ResponseBody
+    public Long addClient(@RequestBody Client client) {//implements NEW CLIENT request
         return clientService.addClient(client);
     }
 }
