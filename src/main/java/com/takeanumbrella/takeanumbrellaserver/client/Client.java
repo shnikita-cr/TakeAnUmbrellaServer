@@ -33,10 +33,10 @@ public class Client {
     private List<Rental> currentRentals = new ArrayList<>();
     private List<Notification> notifications = new ArrayList<>();
 
-    public Client(String name, String email, String password) {
+    public Client(String name, String email, String passwordHash) {
         this.name = name;
         this.email = email;
-        this.passwordHash = PasswordUtils.hashPassword(password);
+        this.passwordHash = passwordHash;
     }
 
     public void addRental(Umbrella umbrella, Tariff tariff, String namePaymentMethod) {
@@ -83,5 +83,19 @@ public class Client {
 
     public List<Notification> getNotifications() {
         return notifications;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "clientId=" + clientId +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", passwordHash='" + passwordHash + '\'' +
+                ", paymentMethods=" + paymentMethods +
+                ", rentalHistory=" + rentalHistory +
+                ", currentRentals=" + currentRentals +
+                ", notifications=" + notifications +
+                '}';
     }
 }
