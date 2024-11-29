@@ -13,8 +13,7 @@ public class RentalLocationController {
         this.rentalLocationService = rentalLocationService;
     }
 
-    @RequestMapping(path="api/v1/places/{cityName}")
-    @GetMapping
+    @GetMapping(path="api/v1/places/{cityName}")
     public List<RentalLocation> getPlacesValid(@PathVariable String cityName) {
         return rentalLocationService.getValidLocations(cityName);
     }

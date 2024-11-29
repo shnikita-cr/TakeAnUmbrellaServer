@@ -1,11 +1,23 @@
 package com.takeanumbrella.takeanumbrellaserver.client.paymentmethod;
 
 import com.takeanumbrella.takeanumbrellaserver.passwordUtil.PasswordUtils;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 
 import java.math.BigDecimal;
 
-public class PayPalPayment implements PaymentMethod {
+@Entity
+@Table(name = "paypal_payment")
+public class PayPalPayment extends PaymentMethod {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
+
+    @Column(name = "email", nullable = false)
+    @Email(message = "Invalid email format")
     private String email;
+
+    @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 
     public PayPalPayment(String email, String password) {

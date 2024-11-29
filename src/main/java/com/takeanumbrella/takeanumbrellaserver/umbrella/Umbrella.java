@@ -4,20 +4,29 @@ import com.takeanumbrella.takeanumbrellaserver.umbrella.states.UmbrellaColor;
 import com.takeanumbrella.takeanumbrellaserver.umbrella.states.UmbrellaSize;
 import com.takeanumbrella.takeanumbrellaserver.rentalLocation.RentalLocation;
 import com.takeanumbrella.takeanumbrellaserver.umbrella.states.UmbrellaStatus;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.SequenceGenerator;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.*;
 
+@Entity
 public class Umbrella {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "umbrella_seq")
     @SequenceGenerator(name = "umbrella_seq", sequenceName = "umbrella_sequence", allocationSize = 1)
     private Long umbrellaId;
-    private final UmbrellaSize size;
-    private final UmbrellaColor color;
+
+    @Enumerated(EnumType.STRING)
+    private UmbrellaSize size; //not final because of empty c-tor for JPA
+
+    @Enumerated(EnumType.STRING)
+    private UmbrellaColor color;
+
+    @Enumerated(EnumType.STRING)
     private UmbrellaStatus status;
+
+    @ManyToOne
+    @JoinColumn(name = "location_id")
     private RentalLocation location;
+
+    public Umbrella(){}
 
     public Umbrella(UmbrellaSize size, UmbrellaColor color, UmbrellaStatus status, RentalLocation location) {
         this.size = size;
@@ -26,8 +35,8 @@ public class Umbrella {
         this.location = location;
     }
 
-    public boolean isFree(){
-        return status== UmbrellaStatus.FREE;
+    public boolean isFree() {
+        return status == UmbrellaStatus.FREE;
     }
 
     public Long getUmbrellaId() {

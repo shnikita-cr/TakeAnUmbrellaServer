@@ -1,7 +1,13 @@
 package com.takeanumbrella.takeanumbrellaserver.rentalLocation;
 
+import jakarta.persistence.*;
+
+@Embeddable
 public class Coordinates {
+    @Column(name = "latitude", nullable = false)
     private double latitude;  // Широта
+
+    @Column(name = "longitude", nullable = false)
     private double longitude; // Долгота
 
     public Coordinates(double latitude, double longitude) {

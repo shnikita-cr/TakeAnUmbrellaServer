@@ -13,7 +13,7 @@ public class ClientService {
 
     public Client getClient(Long id) {
         System.out.println("getClient " + id);
-        return repository.findById(id).orElse(null);
+        return repository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
     }
 
     public Long addClient(Client client) {
@@ -21,4 +21,5 @@ public class ClientService {
         System.out.println("Adding client " + client);
         return id;
     }
+
 }

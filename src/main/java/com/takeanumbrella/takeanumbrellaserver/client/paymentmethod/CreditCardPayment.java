@@ -1,11 +1,26 @@
 package com.takeanumbrella.takeanumbrellaserver.client.paymentmethod;
 
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 
-public class CreditCardPayment implements PaymentMethod{
+@Entity
+@Table(name = "credit_card_payment")
+public class CreditCardPayment extends PaymentMethod {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
+
+    @Column(name = "card_number", nullable = false, length = 16)
     private String cardNumber;
+
+    @Column(name = "card_holder", nullable = false)
     private String cardHolder;
-    private String expirationDate;
+
+    @Column(name = "expiration_date", nullable = false, length = 5)
+    private String expirationDate; // Формат MM/YY
+
+    @Column(name = "cvv", nullable = false, length = 3)
     private String cvv;
 
     public CreditCardPayment(String cardNumber, String cardHolder, String expirationDate, String cvv) {

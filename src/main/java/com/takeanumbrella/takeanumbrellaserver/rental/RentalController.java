@@ -14,15 +14,13 @@ public class RentalController {
         this.rentalService = rentalService;
     }
 
-    @RequestMapping(path = "api/v1/rental")
-    @PostMapping
+    @PostMapping(path = "api/v1/rental")
     @ResponseBody
     public Long rentalStart(@RequestBody RentalStartForm rentalStartForm) {
         return rentalService.rentalStart(rentalStartForm);
     }
 
-    @RequestMapping(path="api/v1/rentalOpenInfo/{rentalId}")
-    @GetMapping
+    @GetMapping(path="api/v1/rentalOpenInfo/{rentalId}")
     @ResponseStatus(HttpStatus.OK)
     public Rental rentalOpenInfo(@PathVariable Long rentalId) {
         //TODO errors handling https://habr.com/ru/articles/675716/

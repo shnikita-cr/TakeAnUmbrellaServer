@@ -1,21 +1,29 @@
 package com.takeanumbrella.takeanumbrellaserver.rental.tariff;
-import java.util.Currency;
+
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 
+@Embeddable
 public class ProductPrice {
-    Currency currency;
-    BigDecimal amount;
 
-    public ProductPrice(Currency currency, BigDecimal amount) {
+    @Column(name = "price", nullable = false)
+    private BigDecimal price;
+
+    @Column(name = "currency", nullable = false)
+    private String currency;
+
+    protected ProductPrice() {}
+
+    public ProductPrice(BigDecimal price, String currency) {
+        this.price = price;
         this.currency = currency;
-        this.amount = amount;
     }
 
-    public Currency getCurrency() {
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public String getCurrency() {
         return currency;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
     }
 }

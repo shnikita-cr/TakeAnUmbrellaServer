@@ -12,7 +12,7 @@ import com.takeanumbrella.takeanumbrellaserver.rentalLocation.RentalLocationStat
 import com.takeanumbrella.takeanumbrellaserver.umbrella.Umbrella;
 import com.takeanumbrella.takeanumbrellaserver.umbrella.states.UmbrellaColor;
 import com.takeanumbrella.takeanumbrellaserver.umbrella.states.UmbrellaSize;
-import com.takeonanumbrella.takeanumbrellaserver.client.*;
+import com.takeanumbrella.takeanumbrellaserver.client.*;
 import com.takeanumbrella.takeanumbrellaserver.umbrella.states.UmbrellaStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -38,7 +38,7 @@ public class Test1 {
     }
 
     Client fedor = new Client("Fedor", "asdf@email", "PaSsWoRd");
-    Tariff tariff = new Tariff("tariff1", new ProductPrice(Currency.getInstance("USD"), BigDecimal.valueOf(1)));
+    Tariff tariff = new Tariff("tariff1", new ProductPrice(BigDecimal.valueOf(1), "USD"));
     PayPalPayment payPal = new PayPalPayment("email", "password");
 
     @Test
