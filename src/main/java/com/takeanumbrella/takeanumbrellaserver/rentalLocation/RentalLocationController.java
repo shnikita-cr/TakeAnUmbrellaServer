@@ -1,7 +1,10 @@
 package com.takeanumbrella.takeanumbrellaserver.rentalLocation;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
 
 @RestController
@@ -13,8 +16,8 @@ public class RentalLocationController {
         this.rentalLocationService = rentalLocationService;
     }
 
-    @GetMapping(path="api/v1/places/{cityName}")
-    public List<RentalLocation> getPlacesValid(@PathVariable String cityName) {
-        return rentalLocationService.getValidLocations(cityName);
+    @GetMapping(path = "api/v1/locations/{querySearch}")
+    public List<RentalLocation> getPlacesValid(@PathVariable("querySearch") String querySearch) {
+        return rentalLocationService.getValidLocations(querySearch);
     }
 }

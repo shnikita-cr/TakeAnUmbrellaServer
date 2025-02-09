@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class RentalController {
     private final RentalService rentalService;
@@ -14,16 +16,23 @@ public class RentalController {
         this.rentalService = rentalService;
     }
 
-    @PostMapping(path = "api/v1/rental")
+    @PostMapping(path = "api/v1/rental/start")
     @ResponseBody
     public Long rentalStart(@RequestBody RentalStartForm rentalStartForm) {
         return rentalService.rentalStart(rentalStartForm);
     }
 
-    @GetMapping(path="api/v1/rentalOpenInfo/{rentalId}")
+    @GetMapping(path = "api/v1/rentalOpenInfo/{rentalId}")
     @ResponseStatus(HttpStatus.OK)
     public Rental rentalOpenInfo(@PathVariable Long rentalId) {
         //TODO errors handling https://habr.com/ru/articles/675716/
         return rentalService.rentalOpenInfo(rentalId);
+    }
+
+    @GetMapping(path = "api/v1/info/client/all/{clientId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Rental> rentalInfo(@PathVariable Long clientId) {
+        //TODO errors handling https://habr.com/ru/articles/675716/
+        return rentalService.rentalInfo(clientId);
     }
 }
