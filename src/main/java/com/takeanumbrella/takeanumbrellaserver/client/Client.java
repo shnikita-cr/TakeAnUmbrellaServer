@@ -9,10 +9,14 @@ import com.takeanumbrella.takeanumbrellaserver.rentalLocation.RentalLocation;
 import com.takeanumbrella.takeanumbrellaserver.umbrella.Umbrella;
 import com.takeanumbrella.takeanumbrellaserver.umbrella.states.UmbrellaStatus;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Entity(name = "client") // название сущности
 @Table(name = "users") //имя таблицы в бд
@@ -38,7 +42,7 @@ public class Client {
     @NotBlank(message = "Password hash cannot be empty")
     private String passwordHash;
 
-//    @ElementCollection // поле является коллекцией встроенных типов или объектов (не сущностей)
+    //    @ElementCollection // поле является коллекцией встроенных типов или объектов (не сущностей)
 //    @CollectionTable(name = "client_payment_methods", joinColumns = @JoinColumn(name = "client_id"))
 //    // name: имя таблицы для хранения коллекции.
 //    // joinColumns: указывает, как коллекция связана с основной таблицей.
@@ -51,20 +55,20 @@ public class Client {
             inverseJoinColumns = @JoinColumn(name = "payment_method_id")
     )
     @MapKeyColumn(name = "payment_name")
-    private Map<String, PaymentMethod> paymentMethods = new HashMap<>();
+    private final Map<String, PaymentMethod> paymentMethods = new HashMap<>();
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     //mappedBy: указывает имя поля в другой сущности, которое владеет связью.
     //cascade: настраивает каскадные операции (CascadeType.ALL включает сохранение, удаление и обновление связанных сущностей).
     //fetch: определяет стратегию загрузки (LAZY или EAGER).
     //orphanRemoval: если true, удаляет связанные объекты, которые больше не входят в коллекцию, из бд.
-    private List<Rental> rentalHistory = new ArrayList<>();
+    private final List<Rental> rentalHistory = new ArrayList<>();
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Rental> currentRentals = new ArrayList<>();
+    private final List<Rental> currentRentals = new ArrayList<>();
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Notification> notifications = new ArrayList<>();
+    private final List<Notification> notifications = new ArrayList<>();
 
     public Client(String name, String email, String passwordHash) {
         this.name = name;

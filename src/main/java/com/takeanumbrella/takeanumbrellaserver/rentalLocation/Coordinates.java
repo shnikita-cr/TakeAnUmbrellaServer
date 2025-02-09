@@ -1,6 +1,7 @@
 package com.takeanumbrella.takeanumbrellaserver.rentalLocation;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class Coordinates {
@@ -13,6 +14,9 @@ public class Coordinates {
     public Coordinates(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
+    }
+
+    public Coordinates() {
     }
 
     public double getLatitude() {

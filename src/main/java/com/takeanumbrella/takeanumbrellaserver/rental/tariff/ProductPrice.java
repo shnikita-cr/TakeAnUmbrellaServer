@@ -1,6 +1,8 @@
 package com.takeanumbrella.takeanumbrellaserver.rental.tariff;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+
 import java.math.BigDecimal;
 
 @Embeddable
@@ -12,7 +14,8 @@ public class ProductPrice {
     @Column(name = "currency", nullable = false)
     private String currency;
 
-    protected ProductPrice() {}
+    protected ProductPrice() {
+    }
 
     public ProductPrice(BigDecimal price, String currency) {
         this.price = price;

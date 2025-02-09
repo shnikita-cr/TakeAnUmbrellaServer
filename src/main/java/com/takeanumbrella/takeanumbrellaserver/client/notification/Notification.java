@@ -19,7 +19,8 @@ public class Notification {
     @Column(name = "message", nullable = false, length = 500)
     private String message;
 
-    protected Notification() {}
+    protected Notification() {
+    }
 
     public Notification(String message) {
         this.message = message;

@@ -1,8 +1,8 @@
 package com.takeanumbrella.takeanumbrellaserver.umbrella;
 
+import com.takeanumbrella.takeanumbrellaserver.rentalLocation.RentalLocation;
 import com.takeanumbrella.takeanumbrellaserver.umbrella.states.UmbrellaColor;
 import com.takeanumbrella.takeanumbrellaserver.umbrella.states.UmbrellaSize;
-import com.takeanumbrella.takeanumbrellaserver.rentalLocation.RentalLocation;
 import com.takeanumbrella.takeanumbrellaserver.umbrella.states.UmbrellaStatus;
 import jakarta.persistence.*;
 
@@ -26,7 +26,8 @@ public class Umbrella {
     @JoinColumn(name = "location_id")
     private RentalLocation location;
 
-    public Umbrella(){}
+    public Umbrella() {
+    }
 
     public Umbrella(UmbrellaSize size, UmbrellaColor color, UmbrellaStatus status, RentalLocation location) {
         this.size = size;
@@ -55,12 +56,12 @@ public class Umbrella {
         return status;
     }
 
-    public RentalLocation getLocation() {
-        return location;
-    }
-
     public void setStatus(UmbrellaStatus status) {
         this.status = status;
+    }
+
+    public RentalLocation getLocation() {
+        return location;
     }
 
     public void setLocation(RentalLocation location) {

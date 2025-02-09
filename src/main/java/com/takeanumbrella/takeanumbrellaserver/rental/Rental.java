@@ -58,11 +58,8 @@ public class Rental {
     @JoinColumn(name = "payment_method_id", nullable = false)
     private PaymentMethod paymentMethod;
 
-    public Long getRentalId() {
-        return rentalId;
+    public Rental() {
     }
-
-    public Rental(){}
 
     public Rental(Client client, Umbrella umbrella, Tariff tariff, PaymentMethod paymentMethod) {
         this.client = client;
@@ -72,6 +69,10 @@ public class Rental {
         this.status = RentalStatus.ACTIVE;
         this.tariff = tariff;
         this.paymentMethod = paymentMethod;
+    }
+
+    public Long getRentalId() {
+        return rentalId;
     }
 
     private BigDecimal getCost(Timestamp endTime) {

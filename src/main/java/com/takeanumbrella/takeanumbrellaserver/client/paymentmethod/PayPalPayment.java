@@ -1,7 +1,9 @@
 package com.takeanumbrella.takeanumbrellaserver.client.paymentmethod;
 
 import com.takeanumbrella.takeanumbrellaserver.passwordUtil.PasswordUtils;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 
 import java.math.BigDecimal;

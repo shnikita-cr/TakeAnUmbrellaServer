@@ -11,16 +11,16 @@ public abstract class PaymentMethod {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public boolean pay(BigDecimal amount){
+    public boolean pay(BigDecimal amount) {
         return false;
-    };
+    }
 
-    public boolean refund(BigDecimal amount){
+    public boolean refund(BigDecimal amount) {
         return false;
-    };
+    }
 
-    public String getPaymentMethodName(){
+    public String getPaymentMethodName() {
         return "need to overload";
-    };
+    }
 
 }
